@@ -18,12 +18,19 @@ div {
 }
 
 .snake, .snake.item {
-	background-image: url(../images/starwars.jpg);
-	background-position-x: 100px;
-	background-position-y: 100px;
+	background-image: url(../images/skywalker.png);
+	background-position: 312px 119px;
+}
+
+.trooper, .trooper.item {
+	background-image: url(../images/stormtrooper.png);
+	background-position: 312px 119px;
+	background-size: 290%;
 }
 
 .item {
-	background: yellow;
+	background-image: url(../images/items.png);
+	background-position: 440px 130px;
+	background-size: 429%;
 }
 

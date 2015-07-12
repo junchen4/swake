@@ -7,11 +7,11 @@
 		this.$el = $el;
 		this.dimX = 20;
 		this.dimY = 20;
-		this.itemTiming = 0;
 		this.items = [];
 		this.snake = new SnakeGame.Snake();
 
 		this.setupGrid();
+		setInterval(this.addItems.bind(this), 4000);
 	};
 
 	Board.prototype.placeItem = function(coordinates) {
@@ -33,21 +33,26 @@
 	};
 
 	Board.prototype.updateBoard = function() {
-		this.$el.find("div .snake,div .item").removeClass(); //"Clear" all classes to redraw snake + items
+		this.$el.find(".snake.item").removeClass(); //"Clear" all classes to redraw snake + items
 		this.$el.find(".snake").removeClass(); //"Clear" all classes to redraw snake + items
+		this.$el.find(".trooper").removeClass(); //"Clear" all classes to redraw snake + items
 
 		for(var i = 0; i < this.snake.segments.length; i++) {
 			var x = this.snake.segments[i][0];
 			var y = this.snake.segments[i][1];
-	    	this.$el.find("div").eq(y*this.dimY + x).addClass("snake");
+			if (i === this.snake.segments.length - 1) {
+		    	this.$el.find("div").eq(y*this.dimY + x).addClass("snake");
+			} else {
+		    	this.$el.find("div").eq(y*this.dimY + x).addClass("trooper");
+			}
 		}
+	};
 
-		if (this.itemTiming % 4 == 0) {
-			var x = Math.floor(Math.random()*this.dimX);
-			var y = Math.floor(Math.random()*this.dimY);
-			this.items.push([x,y]);
-	    	this.$el.find("div").not(".snake").eq(y*this.dimY + x).addClass("item"); 
-		}
+	Board.prototype.addItems = function () {
+		var x = Math.floor(Math.random()*this.dimX);
+		var y = Math.floor(Math.random()*this.dimY);
+		this.items.push([x,y]);
+    	this.$el.find("div").not(".snake").eq(y*this.dimY + x).addClass("item"); 
 	};
 
 	Board.prototype.removeCollidedItem = function () {

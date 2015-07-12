@@ -5,7 +5,7 @@
 
 	var Snake = SnakeGame.Snake = function () {
 		this.dir; //"N", "E", "S", "W" for north, east, south, west
-		this.segments = [[1,5],[2,5],[3,5],[4,5],[5,5]];
+		this.segments = [[5,5]];
 	};
 
 	Snake.prototype.move = function () {
