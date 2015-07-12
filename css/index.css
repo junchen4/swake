@@ -1,0 +1,29 @@
+html, body{
+	min-height:100%;
+} 
+
+
+#board {
+	background-image: url(../images/sand.png);
+	width: 1260px;
+	height: 100%;
+}
+
+div {
+	border: transparent;
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.snake, .snake.item {
+	background-image: url(../images/starwars.jpg);
+	background-position-x: 100px;
+	background-position-y: 100px;
+}
+
+.item {
+	background: yellow;
+}
+
