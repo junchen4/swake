@@ -6,12 +6,14 @@
 	var SnakeView = SnakeGame.SnakeView = function ($el) {
 		this.$el = $el;
 		this.board = new SnakeGame.Board(this.$el);
+		this.score = 0;
 
 		this.$el.keydown(function (event) {
 			this.handleKeyEvent(event);
 		}.bind(this));
 
-		window.setInterval(this.step.bind(this), 500);
+		this.scoreInterval = window.setInterval(this.boostScore.bind(this, 50), 2000);
+		this.stepInterval = window.setInterval(this.step.bind(this), 250);
 	};
 
 	SnakeView.prototype.handleKeyEvent = function (event) {
@@ -41,7 +43,7 @@
 
 	SnakeView.prototype.isOutOfBounds = function () {
 		var head = this.board.snake.segments[this.board.snake.segments.length - 1];
-		if (head[0] < 0 || head[0] >= this.board.dimX) {
+		if (head[0] <= 0 || head[0] > this.board.dimX) {
 			return true;
 		} else if (head[1] < 0 || head[1] >= this.board.dimY) {
 			return true;
@@ -51,22 +53,31 @@
 
 	SnakeView.prototype.onTopOfItem = function () {
 		var head = this.board.snake.segments[this.board.snake.segments.length - 1];
-		for(var i = 0; i < this.board.items.length; i++) {
-			if(head[0] === this.board.items[i][0] && head[1] === this.board.items[i][1]) {
-				return true;
-			}
+		if (this.$el.find(".snake.item").length !== 0) {
+			return true;
 		}
 		return false;
+	};
+
+	SnakeView.prototype.boostScore = function (amount) {
+		this.score += amount;
+		this.$el.find(".score").html("Score: "+this.score);
 	};
 
 	SnakeView.prototype.step = function () {
 		this.board.snake.move();
 		if (this.onTopOfItem()) {
 			this.board.snake.addTail();
+			this.boostScore(200);
 		}
-		console.log(this.board.snake.directions);
-		this.board.render();
-		//check colision and bounds
+		if (this.board.snake.isCollided() || this.isOutOfBounds()) {
+			clearInterval(this.stepInterval);
+			clearInterval(this.scoreInterval);
+			clearInterval(this.board.itemsInterval);
+			this.$el.append("<div class=end>Game over! <br><br> Can you beat "+this.score+" points?<br><br> Press enter to play again. </div>");
+		} else {
+			this.board.render();
+		}
 	};
 
 })();

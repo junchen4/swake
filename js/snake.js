@@ -37,12 +37,25 @@
 
 	Snake.prototype.turn = function (direction) {
 		this.dir = direction;
-		// this.directions.push(direction);
-		// this.directions.shift();
 	};
 
 	Snake.prototype.addTail = function () {
-		this.segments.unshift(this.segments[0]);
+		var tail = this.segments[0].slice(0);
+		switch(this.directions[0]) {
+			case "N":
+				tail[1]++;
+				break;
+			case "E":
+				tail[0]--;
+				break;
+			case "S":
+				tail[1]--;
+				break;
+			case "W":
+				tail[0]++;
+				break;
+		}	
+		this.segments.unshift(tail);
 		this.directions.unshift(this.directions[0]);
 	};
 

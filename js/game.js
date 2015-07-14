@@ -20,7 +20,6 @@
 
 	Game.prototype.start = function () {
 		new SnakeGame.SnakeView(this.$el);
-
 	};
 
 	

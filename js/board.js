@@ -5,14 +5,14 @@
 
 	var Board = SnakeGame.Board = function ($el) {
 		this.$el = $el;
-		this.dimX = 20;
-		this.dimY = 20;
+		this.dimX = 15;
+		this.dimY = 15;
 		this.items = [];
 		this.snake = new SnakeGame.Snake();
 		this.updaterLocals = [];
 
 		this.setupGrid();
-		setInterval(this.addItems.bind(this), 4000);
+		this.itemsInterval = setInterval(this.addItems.bind(this), 4000);
 	};
 
 	Board.prototype.placeItem = function(coordinates) {
@@ -20,7 +20,7 @@
 	};
 
 	Board.prototype.setupGrid = function () {
-		var html = "";
+		var html = "<div class=score></div>";
 		for(var y = 0; y < this.dimY; y++){
 		    for(var x = 0; x < this.dimX; x++){  
 		    	if (x === this.dimX - 1) {
@@ -47,6 +47,8 @@
 
 			if (i === this.snake.segments.length - 1) {
 		    	$divSegment.addClass("snake");
+		    	$divSegment.addClass(direction + "0v");
+		    	this.beginWalking($divSegment, direction + "0v", direction + "1v");
 			} else {
 		    	$divSegment.addClass("trooper");
 		    	$divSegment.addClass(direction + "0");

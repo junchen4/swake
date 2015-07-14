@@ -26,12 +26,17 @@
     <script src="js/jquery-1.9.1.js"></script>
     
     <div id="board" tabindex="0">
-        <div class="start"></div>
+        <div class="start">
+            <div class="text-area">
+                Welcome to Swake! <br><br>
+                Use arrow keys to move. <br> <br>
+                Press enter to start playing.
+            </div>
+        </div>
     </div>
 
     <script>
         var board = document.getElementById("board");
-
         new SnakeGame.Game(board);
     </script>
 
