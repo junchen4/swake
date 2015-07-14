@@ -1,0 +1,171 @@
+html, body{
+	height:100%;
+	background: #435C65;
+} 
+
+
+#board {
+	background-image: url(../images/sand.png);
+	width: 900px;
+	height: 900px;
+	margin: 0 auto;
+	display: block;
+	border: solid 5px black;
+}
+
+.start {
+  position: absolute;
+  width: 400px;
+  right: 0;
+  top: 30%;
+  left: 33%;
+  background: whitesmoke;
+  border-radius: 4px;
+	height: 156px;
+	font-size: 22px;
+	opacity: 0.7;
+}
+
+.start .text-area {
+	margin: 0 auto;
+	width: 250px;
+	text-align: center;
+	display: block;
+	padding: 10px 0 10px 0;
+}
+
+.end {
+  position: absolute;
+  width: 400px;
+  right: 0;
+  top: 30%;
+  left: 33%;
+  background: whitesmoke;
+  border-radius: 4px;
+	height: 140px;
+	font-size: 22px;
+	opacity: 0.7;
+	padding: 10px 0 10px 0;
+	text-align: center;
+}
+
+.score {
+	position: absolute;
+	opacity: 1;
+    left: 45%;
+    width: 200px;
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+div {
+	border: transparent;
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.snake, .snake.item {
+	background-image: url(../images/vader.png);
+	background-size: 300%;
+}
+
+.trooper, .trooper.item {
+	background-image: url(../images/stormtrooper.png);
+	background-size: none;
+}
+
+.item {
+	background-image: url(../images/items.png);
+	background-position: 440px 130px;
+	background-size: 429%;
+}
+
+/*troopers*/
+
+.E0 {
+	background-position: 313px 125px;
+	background-size: 290%;
+}
+
+.E1 {
+	background-position: 270px 125px;
+	background-size: 290%;	
+}
+
+.N0 {
+	background-position: 274px 62px;
+	background-size: 296%;
+}
+
+.N1 {
+	background-position: 337px 63px;
+	background-size: 314%;	
+}
+
+.S0 {
+	background-position: 384px 277px;
+	background-size: 314%;
+}
+
+.S1 {
+	background-position: 336px 277px;
+	background-size: 314%;	
+}
+
+.W0 {
+	background-position: 338px 204px;
+	background-size: 314%;
+}
+
+.W1 {
+	background-position: 381px 205px;
+	background-size: 314%;	
+}
+
+/*vader*/
+.E0v {
+	background-position: 362px 119px;
+	background-size: 300%;
+}
+
+.E1v {
+	background-position: 312px 119px;
+	background-size: 300%;	
+}
+
+.N0v {
+	background-position: 299px 299px;
+	background-size: 300%;
+}
+
+.N1v {
+	background-position: 359px 299px;
+	background-size: 300%;	
+}
+
+.S0v {
+	background-position: 359px 236px;
+	background-size: 300%;
+}
+
+.S1v {
+	background-position: 418px 236px;
+	background-size: 300%;	
+}
+
+.W0v {
+	background-position: 362px 177px;
+	background-size: 300%;
+}
+
+.W1v {
+	background-position: 418px 177px;
+	background-size: 300%;	
+}
+
+
+.hidden {
+	display: none;
+}
