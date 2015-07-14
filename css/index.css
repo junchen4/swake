@@ -9,6 +9,16 @@ html, body{
 	height: 100%;
 }
 
+.start {
+  position: absolute;
+  width: 400px;
+  right: 0;
+  top: 30%;
+  left: 31%;
+  background: whitesmoke;
+  border-radius: 4px;
+}
+
 div {
 	border: transparent;
 	width: 60px;
@@ -24,8 +34,7 @@ div {
 
 .trooper, .trooper.item {
 	background-image: url(../images/stormtrooper.png);
-	background-position: 312px 119px;
-	background-size: 290%;
+	background-size: none;
 }
 
 .item {
@@ -34,3 +43,46 @@ div {
 	background-size: 429%;
 }
 
+.E0 {
+	background-position: 312px 125px;
+	background-size: 290%;
+}
+
+.E1 {
+	background-position: 270px 125px;
+	background-size: 290%;	
+}
+
+.N0 {
+	background-position: 274px 62px;
+	background-size: 296%;
+}
+
+.N1 {
+	background-position: 337px 63px;
+	background-size: 314%;	
+}
+
+.S0 {
+	background-position: 384px 277px;
+	background-size: 314%;
+}
+
+.S1 {
+	background-position: 336px 277px;
+	background-size: 314%;	
+}
+
+.W0 {
+	background-position: 338px 204px;
+	background-size: 314%;
+}
+
+.W1 {
+	background-position: 381px 205px;
+	background-size: 314%;	
+}
+
+.hidden {
+	display: none;
+}

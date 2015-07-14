@@ -64,6 +64,7 @@
 		if (this.onTopOfItem()) {
 			this.board.snake.addTail();
 		}
+		console.log(this.board.snake.directions);
 		this.board.render();
 		//check colision and bounds
 	};

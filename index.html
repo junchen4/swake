@@ -24,11 +24,14 @@
     <script src="js/snakeView.js"></script>
     <script src="js/game.js"></script>
     <script src="js/jquery-1.9.1.js"></script>
-
-    <div id="board" tabindex="0"></div>
+    
+    <div id="board" tabindex="0">
+        <div class="start"></div>
+    </div>
 
     <script>
         var board = document.getElementById("board");
+
         new SnakeGame.Game(board);
     </script>
 

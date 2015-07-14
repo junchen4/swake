@@ -9,6 +9,7 @@
 		this.dimY = 20;
 		this.items = [];
 		this.snake = new SnakeGame.Snake();
+		this.updaterLocals = [];
 
 		this.setupGrid();
 		setInterval(this.addItems.bind(this), 4000);
@@ -33,6 +34,7 @@
 	};
 
 	Board.prototype.updateBoard = function() {
+		this.clearIntervals();
 		this.$el.find(".snake.item").removeClass(); //"Clear" all classes to redraw snake + items
 		this.$el.find(".snake").removeClass(); //"Clear" all classes to redraw snake + items
 		this.$el.find(".trooper").removeClass(); //"Clear" all classes to redraw snake + items
@@ -40,12 +42,39 @@
 		for(var i = 0; i < this.snake.segments.length; i++) {
 			var x = this.snake.segments[i][0];
 			var y = this.snake.segments[i][1];
+			var direction = this.snake.directions[i];
+			var $divSegment = this.$el.find("div").eq(y*this.dimY + x);
+
 			if (i === this.snake.segments.length - 1) {
-		    	this.$el.find("div").eq(y*this.dimY + x).addClass("snake");
+		    	$divSegment.addClass("snake");
 			} else {
-		    	this.$el.find("div").eq(y*this.dimY + x).addClass("trooper");
+		    	$divSegment.addClass("trooper");
+		    	$divSegment.addClass(direction + "0");
+		    	this.beginWalking($divSegment, direction + "0", direction + "1");
 			}
 		}
+	};
+
+	Board.prototype.clearIntervals = function () {
+		while(this.updaterLocals.length > 0) {
+			clearInterval(this.updaterLocals[0]);
+			this.updaterLocals.shift();
+		}
+	};
+
+	//alternatve between classes to give appearance of walking
+	Board.prototype.beginWalking = function ($divSegment, dir0, dir1) { 
+		var interval = setInterval(function () {
+			if ($divSegment.hasClass(dir0)) {
+				$divSegment.removeClass(dir0);
+				$divSegment.addClass(dir1);
+			} else {
+				$divSegment.removeClass(dir1);
+				$divSegment.addClass(dir0);			
+			}
+		}.bind(this), 80);
+
+		this.updaterLocals.push(interval);
 	};
 
 	Board.prototype.addItems = function () {

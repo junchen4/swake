@@ -6,6 +6,7 @@
 	var Snake = SnakeGame.Snake = function () {
 		this.dir; //"N", "E", "S", "W" for north, east, south, west
 		this.segments = [[5,5]];
+		this.directions = ["E"];
 	};
 
 	Snake.prototype.move = function () {
@@ -29,14 +30,20 @@
 
 		//push on the new head to give appearance of moving
 		this.segments.push(newHead);
+		this.directions.push(this.dir);
+		this.directions.shift();
+
 	};
 
 	Snake.prototype.turn = function (direction) {
 		this.dir = direction;
+		// this.directions.push(direction);
+		// this.directions.shift();
 	};
 
 	Snake.prototype.addTail = function () {
 		this.segments.unshift(this.segments[0]);
+		this.directions.unshift(this.directions[0]);
 	};
 
 	Snake.prototype.isCollided = function () {
