@@ -4,7 +4,7 @@
 	}
 
 	var Snake = SnakeGame.Snake = function () {
-		this.dir; //"N", "E", "S", "W" for north, east, south, west
+		this.dir = "E"; //current direction: "N", "E", "S", "W" for north, east, south, west
 		this.segments = [[5,5]];
 		this.directions = ["E"];
 	};
