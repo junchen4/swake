@@ -4,17 +4,13 @@
 	}
 
 	var Snake = SnakeGame.Snake = function () {
-<<<<<<< HEAD
-		this.dir = "E"; //current direction: "N", "E", "S", "W" for north, east, south, west
-=======
 		this.dir; //"N", "E", "S", "W" for north, east, south, west
->>>>>>> master
 		this.segments = [[5,5]];
 		this.directions = ["E"];
 	};
 
 	Snake.prototype.move = function () {
-		//shift off "tail" segment 
+		//shift off "tail" segment
 		var newHead = this.segments[this.segments.length - 1].slice(0);
 		this.segments.shift();
 		switch(this.dir) {
@@ -58,7 +54,7 @@
 			case "W":
 				tail[0]++;
 				break;
-		}	
+		}
 		this.segments.unshift(tail);
 		this.directions.unshift(this.directions[0]);
 	};
