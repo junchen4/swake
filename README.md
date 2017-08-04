@@ -2,7 +2,7 @@
 
 Browser-based remake of the classic Snake game. Written in JavaScript using jQuery, HTML5, and CSS
 
-### [Play now!](http://www.junchen.me/swake/)
+### [Play now!](http://swake.herokuapp.com/)
 
 ## How-to
 * Use arrow keys to move in corresponding directions
